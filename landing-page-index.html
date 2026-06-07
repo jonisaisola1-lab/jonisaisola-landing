@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A practical field guide for business owners who are done feeling behind on AI. Free. No fluff. Actually useful.">
+<meta property="og:title" content="Did Your AI Come With a User's Guide?">
+<meta property="og:description" content="Nobody handed you a manual. Here's yours. Free guide from Jonisa Isola.">
+<title>Did Your AI Come With a User's Guide? — Jonisa Isola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bone: #F4EFE4;
+    --ink: #1C1814;
+    --ink-light: #4A4640;
+    --ink-muted: #8A8580;
+    --red: #C0321A;
+    --rule: #D8D0C4;
+    --white: #FDFAF5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bone);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 3px 8px;
+  }
+
+  /* HERO */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+    .hero-form-col { order: -1; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em { font-style: italic; color: var(--red); }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--ink-light);
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  /* PROMPT STACK — hero */
+  .prompt-stack {
+    background: var(--ink);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+  }
+
+  .ps-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+
+  .ps-list {
+    list-style: none;
+    counter-reset: ps;
+  }
+
+  .ps-list li {
+    counter-increment: ps;
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+    color: #C8C4BC;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: baseline;
+  }
+
+  .ps-list li:last-child { border: none; }
+
+  .ps-list li::before {
+    content: counter(ps) ".";
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--red);
+    flex-shrink: 0;
+    width: 1.25rem;
+  }
+
+  .ps-kicker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #6A6560;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    position: sticky;
+    top: 5rem;
+  }
+
+  .form-card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-card h2 em { font-style: italic; color: var(--red); }
+
+  .form-card p {
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .form-group { margin-bottom: 1rem; }
+
+  label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--rule);
+    background: var(--bone);
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: var(--ink);
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--red);
+    color: var(--bone);
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover { opacity: 0.88; }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .form-fine {
+    font-size: 0.72rem;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+
+  .form-success .check {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .form-success h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-success p {
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* WHAT YOU GET */
+  .what {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-marker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .section-rule { flex: 1; height: 1px; background: var(--rule); }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+  }
+
+  @media (max-width: 760px) {
+    .what-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .what-grid { grid-template-columns: 1fr; }
+  }
+
+  .what-item {
+    padding: 1.75rem;
+    border-right: 1px solid var(--rule);
+    background: var(--white);
+  }
+
+  .what-item:last-child { border-right: none; }
+
+  @media (max-width: 760px) {
+    .what-item:nth-child(2) { border-right: none; }
+    .what-item:nth-child(3) { border-right: 1px solid var(--rule); }
+    .what-item { border-bottom: 1px solid var(--rule); }
+    .what-item:nth-last-child(-n+2) { border-bottom: none; }
+  }
+
+  .what-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .what-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .what-title em { font-style: italic; color: var(--red); }
+
+  .what-desc {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* PULL QUOTE */
+  .quote-band {
+    background: var(--ink);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .quote-band blockquote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    color: var(--bone);
+    max-width: 700px;
+    margin: 0 auto 1rem;
+    line-height: 1.4;
+  }
+
+  .quote-band cite {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6A6560;
+    font-style: normal;
+  }
+
+  /* ABOUT */
+  .about {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .about { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .about h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .about h2 em { font-style: italic; color: var(--red); }
+
+  .about p {
+    font-size: 0.97rem;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+
+  .about-creds {
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+
+  .about-creds li {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .about-creds li:last-child { border: none; }
+  .about-creds li::before { content: '—'; color: var(--red); flex-shrink: 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; }
+
+  /* BOTTOM CTA */
+  .bottom-cta {
+    background: var(--red);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .bottom-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--bone);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .bottom-cta p {
+    color: rgba(244,239,228,0.75);
+    margin-bottom: 2rem;
+    font-size: 0.97rem;
+  }
+
+  .bottom-btn {
+    display: inline-block;
+    background: var(--bone);
+    color: var(--red);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .bottom-btn:hover { opacity: 0.88; }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-name {
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .footer-copy {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">Jonisa Isola</a>
+  <span class="nav-label">Free Guide</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Field Manual — Vol. 01</span>
+    <h1>Nobody handed you a manual for AI.<br><em>Here's yours.</em></h1>
+    <p class="hero-sub">A practical guide for business owners who are done feeling behind on a tool they already paid for. Free. No fluff. Actually useful.</p>
+
+    <div class="prompt-stack">
+      <span class="ps-label">Sound familiar? The Midwestern Prompt Stack™</span>
+      <ul class="ps-list">
+        <li>Apologize for asking</li>
+        <li>Underexplain the problem</li>
+        <li>Hint instead of asking</li>
+        <li>Apologize again</li>
+        <li>Thank the AI</li>
+        <li>Complain to your friends that ChatGPT is useless</li>
+      </ul>
+      <p class="ps-kicker">This guide fixes the stack.</p>
+    </div>
+  </div>
+
+  <div class="hero-form-col">
+    <div class="form-card">
+      <h2>Did Your AI Come With a <em>User's Guide?</em></h2>
+      <p>Enter your name and email and I'll send it straight to your inbox. No signup required. No sequence. Just the guide.</p>
+
+      <form id="guide-form" action="https://formspree.io/f/meewavey" method="POST">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="Your first name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <input type="hidden" name="_subject" value="New Guide Request — Did Your AI Come With a User's Guide?">
+        <input type="hidden" name="_next" value="https://jonisaisola.com?submitted=true">
+        <button type="submit" class="submit-btn" id="submit-btn">Send Me the Guide →</button>
+        <p class="form-fine">No spam. No pitch deck. Just the guide.</p>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <span class="check">✓</span>
+        <h3>You're in.</h3>
+        <p>Click below to download your guide right now.</p>
+        <a href="/did-your-ai-come-with-a-users-guide.pdf" download style="display:inline-block;margin-top:1rem;background:#C0321A;color:#F4EFE4;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:1rem 1.5rem;text-decoration:none;">Download the guide →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT YOU GET -->
+<section class="what">
+  <div class="section-marker">
+    <span class="section-tag">What's inside</span>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="what-grid">
+    <div class="what-item">
+      <span class="what-num">01</span>
+      <div class="what-title">Stop Apologizing <em>to the Robot</em></div>
+      <p class="what-desc">Why your AI outputs feel generic — and the one setup step that fixes it before you type a single prompt.</p>
+    </div>
+    <div class="what-item">
+      <span class="what-num">02</span>
+      <div class="what-title">Say What You <em>Actually Mean</em></div>
+      <p class="what-desc">The five parts of a prompt that works. Why the Midwesterner's instinct to hint instead of ask is costing you usable output.</p>
+    </div>
+    <div class="what-item">
+      <span class="what-num">03</span>
+      <div class="what-title">You're Still <em>the Boss Here</em></div>
+      <p class="what-desc">Human-in-the-loop isn't a limitation. It's the whole strategy. Why the businesses winning with AI haven't handed over the wheel.</p>
+    </div>
+    <div class="what-item">
+      <span class="what-num">04</span>
+      <div class="what-title">It's a Tool. <em>That's Enough.</em></div>
+      <p class="what-desc">What AI is actually good at, what it isn't, and why the fear-and-noise machine around it is someone else's business model.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>"You're not behind. You just needed the manual. Now you have it."</blockquote>
+  <cite>— Jonisa Isola, AI Consultant</cite>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div>
+    <h2>Who wrote this and <em>why should you care?</em></h2>
+    <p>I'm Jonisa Isola — AI automation consultant, 16-year business owner, and someone who figured out this stuff the same way you're trying to right now: by doing it, breaking it, and figuring out what actually works.</p>
+    <p>I don't sell fear. I don't sell a $997 course that teaches you that AI exists. I build practical systems for real businesses and I wrote this guide because most of what's out there is either too technical or too vague to be useful.</p>
+    <p>This is the guide I wish someone had handed me earlier.</p>
+  </div>
+  <div>
+    <ul class="about-creds">
+      <li>AI Automation Integration Specialist — TripleTen</li>
+      <li>AI Business Growth Strategist — John Lee Group</li>
+      <li>16 years running Headwaters Massage — solo practice, 85%+ retention</li>
+      <li>Co-founder, Syn Veritas</li>
+      <li>HubSpot, Make.com, n8n, UiPath, Google Workspace</li>
+      <li>Builds chatbots, voice agents, and AI workflows for real businesses</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>Ready for the guide?</h2>
+  <p>Free. One email. No strings attached.</p>
+  <a href="#guide-form" class="bottom-btn" onclick="document.getElementById('fname').focus()">Get the free guide →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Jonisa Isola</span>
+  <span class="footer-copy">© 2026 · jonisaisola.com</span>
+</footer>
+
+<script>
+  const form = document.getElementById('guide-form');
+  const btn = document.getElementById('submit-btn');
+  const success = document.getElementById('form-success');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send Me the Guide →';
+        alert('Something went wrong. Please try again.');
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.textContent = 'Send Me the Guide →';
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>
+
+</body>
+</html>
