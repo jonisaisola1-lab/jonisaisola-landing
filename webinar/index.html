@@ -1,293 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Field Manual Vol. 02: Now What? — Jonisa Isola</title>
-  <meta name="description" content="You downloaded the AI. You got through the basics. Now what do you actually do with it? Live webinar July 1st, 6pm CT.">
-  <meta property="og:title" content="Field Manual Vol. 02: Now What?">
-  <meta property="og:description" content="Live webinar July 1st, 6pm CT. For people who have AI and haven't figured out how to make it useful yet.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="You downloaded the AI. You got through the basics. Now what do you actually do with it? Live webinar July 1st, 6pm CT." />
+  <meta property="og:description" content="Live webinar July 1st, 6pm CT. For people who have AI and haven't figured out how to make it useful yet." />
+  <meta property="og:title" content="Field Manual Vol. 02: Now What?" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bone: #F4EFE4;
-      --ink: #1C1814;
-      --ink-light: #4A4640;
-      --ink-muted: #8A8580;
-      --red: #C0321A;
-      --rule: #D8D0C4;
-      --white: #FDFAF5;
+      --black: #111111;
+      --red: #B91C1C;
+      --gray: #555555;
+      --light: #F7F6F3;
+      --white: #FFFFFF;
+      --border: #E0DED9;
     }
 
-    html { scroll-behavior: smooth; }
-
     body {
-      background: var(--bone);
-      color: var(--ink);
-      font-family: 'Hanken Grotesk', sans-serif;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--white);
+      color: var(--black);
       line-height: 1.6;
     }
 
-    /* Header */
     header {
-      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--rule);
     }
 
     .site-name {
-      font-family: 'Fraunces', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--ink);
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      font-weight: normal;
+      letter-spacing: 0.01em;
       text-decoration: none;
+      color: var(--black);
     }
 
-    .header-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
+    .series-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.7rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--red);
+      color: var(--gray);
     }
 
-    /* Hero */
+    nav a {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--black); }
+    nav a.active { color: var(--black); border-bottom: 1px solid var(--black); }
+
     .hero {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
       padding: 5rem 2rem 3rem;
     }
 
     .eyebrow {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 1.25rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
     }
 
     h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 700;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: bold;
       line-height: 1.1;
       margin-bottom: 1.5rem;
-      color: var(--ink);
+      letter-spacing: -0.02em;
     }
 
     h1 em {
       font-style: italic;
       color: var(--red);
+      display: block;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
-      color: var(--ink-light);
-      max-width: 560px;
-      margin-bottom: 2.5rem;
-      line-height: 1.75;
-    }
-
-    /* Event details bar */
-    .event-details {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      padding: 1.75rem 0;
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .detail-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .detail-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
-
-    .detail-value {
-      font-family: 'Fraunces', serif;
+    .hero-sub {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--ink);
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
     }
 
-    /* What we cover */
-    .content-section {
-      max-width: 760px;
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    .meta-cell {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+    }
+
+    .meta-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-value {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    .covers {
+      max-width: 720px;
       margin: 0 auto;
       padding: 3.5rem 2rem;
-      border-bottom: 1px solid var(--rule);
     }
 
-    .section-label {
-      font-family: 'IBM Plex Mono', monospace;
+    .covers .eyebrow { margin-bottom: 2rem; }
+
+    .cover-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+
+    .cover-item {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem;
+    }
+
+    .cover-num {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 0.65rem;
       letter-spacing: 0.2em;
-      text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 2rem;
-    }
-
-    .topics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .topic {
-      padding: 1.5rem;
-      background: var(--white);
-      border: 1px solid var(--rule);
-    }
-
-    .topic-number {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--red);
-      letter-spacing: 0.15em;
       display: block;
       margin-bottom: 0.6rem;
     }
 
-    .topic-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1rem;
-      font-weight: 600;
+    .cover-item h3 {
+      font-size: 1.05rem;
+      font-weight: bold;
+      line-height: 1.3;
       margin-bottom: 0.5rem;
-      color: var(--ink);
     }
 
-    .topic-desc {
-      font-size: 0.875rem;
-      color: var(--ink-light);
+    .cover-item h3 em {
+      font-style: italic;
+      color: var(--red);
+    }
+
+    .cover-item p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gray);
       line-height: 1.6;
     }
 
-    /* Who this is for */
-    .for-section {
-      max-width: 760px;
+    .audience {
+      background: var(--light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem 2rem;
+    }
+
+    .audience-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .audience p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    .audience strong { color: var(--black); }
+
+    .cta {
+      max-width: 720px;
       margin: 0 auto;
       padding: 3.5rem 2rem;
-      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
     }
 
-    .for-text {
-      font-family: 'Fraunces', serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--ink-light);
-      font-style: italic;
-    }
-
-    .for-text strong {
-      color: var(--ink);
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    /* CTA */
-    .cta-section {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .price-display {
-      font-family: 'Fraunces', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--ink);
+    .price-block .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: -0.02em;
       line-height: 1;
-      margin-bottom: 0.5rem;
     }
 
-    .price-includes {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 2rem;
+    .price-block .price-note {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.4rem;
     }
 
-    .cta-button {
+    .btn {
       display: inline-block;
-      background: var(--red);
-      color: var(--white);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      padding: 1rem 2rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 1rem 2.5rem;
-      transition: opacity 0.2s ease;
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+      transition: background 0.2s, border-color 0.2s;
     }
 
-    .cta-button:hover { opacity: 0.85; }
-
-    .cta-note {
-      font-size: 0.8rem;
-      
-      font-size: 0.65rem;
-      letter-spacing: 0.05em;
+    .btn:hover {
+      background: var(--red);
+      border-color: var(--red);
     }
 
-    /* About */
-    gap: 2rem;
-      align-items: flex-start;
+    .zoom-note {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: 0.75rem;
     }
 
-    .about-text h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
+    .bio {
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 2rem;
+    }
+
+    .bio-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .bio-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .bio-text p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.75;
       margin-bottom: 0.75rem;
     }
 
-    .about-text p {
-      font-size: 0.9rem;
-      color: var(--ink-light);
-      line-height: 1.7;
+    .tool-stack {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.8;
     }
 
-    /* Footer */
     footer {
-      background: var(--ink);
-      color: var(--bone);
-      padding: 2rem;
-      text-align: center;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.75rem;
+      color: var(--gray);
     }
 
     footer a {
-      color: var(--bone);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.75rem;
+      color: var(--gray);
       text-decoration: none;
-      opacity: 0.7;
+      margin-left: 1.5rem;
     }
 
-    @media (max-width: 600px) {
-      .event-details { gap: 1.5rem; }
-      h1 { font-size: 2rem; }
-      .about-section { flex-direction: column; }
+    footer a:hover { color: var(--black); }
+
+    @media (max-width: 640px) {
+      header { flex-direction: column; gap: 0.75rem; text-align: center; }
+      nav a { margin-left: 1rem; }
+      .meta-grid { grid-template-columns: 1fr 1fr; }
+      .cover-list { grid-template-columns: 1fr; }
+      .cta { flex-direction: column; align-items: flex-start; }
+      .bio-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+      footer a { margin-left: 0; margin-right: 1rem; }
     }
   </style>
 </head>
@@ -295,72 +341,107 @@
 
   <header>
     <a href="/" class="site-name">Jonisa Isola</a>
-    <span class="header-label">Field Manual Series</span>
+    <span class="series-label">Field Manual Series</span>
+    <nav>
+      <a href="/guide">Free Guide</a>
+      <a href="/webinar" class="active">Webinar</a>
+    </nav>
   </header>
 
   <section class="hero">
     <p class="eyebrow">Field Manual — Vol. 02 · Live Webinar</p>
-    <h1>You have the AI.<br><em>Now what?</em></h1>
-    <p class="subtitle">You downloaded it. You got through the prompting basics. But what do you actually do with it on a Tuesday afternoon? This is the session for people who have AI and haven't figured out how to make it stick yet.</p>
+    <h1>You have the AI.<em>Now what?</em></h1>
+    <p class="hero-sub">
+      You downloaded it. You got through the prompting basics. But what do you actually do with it on a Tuesday afternoon? This is the session for people who have AI and haven't figured out how to make it stick yet.
+    </p>
 
-    <div class="event-details">
-      <div class="detail-item">
-        <span class="detail-label">Date</span>
-        <span class="detail-value">Wednesday, July 1st</span>
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <span class="meta-label">Date</span>
+        <span class="meta-value">Wednesday, July 1st</span>
       </div>
-      <div class="detail-item">
-        <span class="detail-label">Time</span>
-        <span class="detail-value">6:00 PM Central</span>
+      <div class="meta-cell">
+        <span class="meta-label">Time</span>
+        <span class="meta-value">6:00 PM Central</span>
       </div>
-      <div class="detail-item">
-        <span class="detail-label">Format</span>
-        <span class="detail-value">Live + Recording</span>
+      <div class="meta-cell">
+        <span class="meta-label">Format</span>
+        <span class="meta-value">Live + Recording</span>
       </div>
-      <div class="detail-item">
-        <span class="detail-label">Duration</span>
-        <span class="detail-value">60 Minutes</span>
+      <div class="meta-cell">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">60 Minutes</span>
       </div>
     </div>
   </section>
 
-  <section class="content-section">
-    <p class="section-label">What we cover</p>
-    <div class="topics">
-      <div class="topic">
-        <span class="topic-number">01</span>
-        <p class="topic-title">Day to day use</p>
-        <p class="topic-desc">What AI actually helps with in a real workflow — and what isn't worth your time to hand off.</p>
+  <hr class="divider" />
+
+  <section class="covers">
+    <p class="eyebrow">What we cover</p>
+    <div class="cover-list">
+      <div class="cover-item">
+        <span class="cover-num">01</span>
+        <h3>Day to day <em>use</em></h3>
+        <p>What AI actually helps with in a real workflow — and what isn't worth your time to hand off.</p>
       </div>
-      <div class="topic">
-        <span class="topic-number">02</span>
-        <p class="topic-title">Business basics</p>
-        <p class="topic-desc">Emails, content, research, customer responses. The tasks eating your week that AI can handle in minutes.</p>
+      <div class="cover-item">
+        <span class="cover-num">02</span>
+        <h3>Business <em>basics</em></h3>
+        <p>Emails, content, research, customer responses. The tasks eating your week that AI can handle in minutes.</p>
+      </div>
+      <div class="cover-item">
+        <span class="cover-num">03</span>
+        <h3>Creative <em>tools</em></h3>
+        <p>Image generation, video scripts, social posts. The stuff people assume is complicated that actually isn't.</p>
+      </div>
+      <div class="cover-item">
+        <span class="cover-num">04</span>
+        <h3>Building your <em>stack</em></h3>
+        <p>Different tools for different jobs. What ChatGPT does vs Claude vs everything else — and which one is right for you.</p>
       </div>
     </div>
-    
-       
-     
-         <section class="cta-section">
-    <p class="price-display">$75</p>
-    <p class="price-includes">Live session · Recording included · July 1st · 6pm CT</p>
-    <a href="https://square.link/u/SuUMLs0s" class="cta-button">Register Now →</a>
-    <p class="cta-note">Zoom link delivered by email after registration.</p>
   </section>
 
-  <section class="about-section">
-    <div class="about-text">
-      <h3>Who's teaching this</h3>
-      <p>Jonisa Isola is an AI Automation Integration Specialist 
-and AI Business Growth Strategist who spent 16 years 
-running a successful solo practice before building AI 
-systems for real businesses. She learned this the same 
-way you're trying to right now — and that's exactly 
-why she can teach it.</p>
+  <hr class="divider" />
+
+  <section class="audience">
+    <div class="audience-inner">
+      <p class="eyebrow" style="margin-bottom:1.25rem;">Who this is for</p>
+      <p>Business owners, solo practitioners, and service providers who <strong>already have an AI tool</strong> and are still mostly using it like a search engine. You're not behind. You just need someone to show you what to do with it from here.</p>
     </div>
   </section>
-</section>
+
+  <section class="cta">
+    <div class="price-block">
+      <div class="price">$75</div>
+      <p class="price-note">Live session · Recording included · July 1st · 6pm CT</p>
+    </div>
+    <div>
+      <a href="https://square.link/u/SuUMLs0s" class="btn">Register Now →</a>
+      <p class="zoom-note">Zoom link delivered by email after registration.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="bio">
+    <div class="bio-inner">
+      <span class="bio-label">Who's teaching this</span>
+      <div class="bio-text">
+        <p>Jonisa Isola is an AI Automation Integration Specialist and AI Business Growth Strategist who spent 16 years running a successful solo practice before building AI systems for real businesses. She learned this the same way you're trying to right now — and that's exactly why she can teach it.</p>
+        <p class="tool-stack">HubSpot · Zapier · Make.com · ManyChat · VS Code · GitHub · Vercel · Claude · ChatGPT · Google Workspace · UiPath</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <a href="/">jonisaisola.com</a> &nbsp;·&nbsp; Jonisa Isola © 2026
+    <p>jonisaisola.com · Jonisa Isola © 2026</p>
+    <div>
+      <a href="/">Home</a>
+      <a href="/guide">Free Guide</a>
+      <a href="https://jojayne.substack.com" target="_blank">Substack</a>
+    </div>
   </footer>
 
 </body>
